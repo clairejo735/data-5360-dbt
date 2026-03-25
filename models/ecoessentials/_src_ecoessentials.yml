@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: eco_marketing_landing
+    database: clairejones
+    schema: eco_dw_source
+    tables:
+      - name: marketingemails
+
+  - name: eco_transactional_landing
+    database: clairejones
+    schema: eco_source__ecoessentials_transactional_db
+    tables:
+      - name: customer
+      - name: order
+      - name: order_line
+      - name: product
+      - name: promotional_campaign
