@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: eco_dim_campaign
+    description: "Ecoessentials Campaign Dimension"
+  - name: eco_dim_customer
+    description: "Ecoessentials Customer Dimension"
+  - name: eco_dim_date
+    description: "Ecoessentials Date Dimension"
+  - name: eco_dim_email
+    description: "Ecoessentials Email Dimension"
+  - name: eco_dim_event
+    description: "Ecoessentials Email Event Dimension"
+  - name: eco_dim_product
+    description: "Ecoessentials Product Dimension"
+  - name: eco_dim_timestamp
+    description: "Ecoessentials Timestamp Dimension"
+  - name: fact_order_line
+    description: |
+      Order Line Fact.
+      The grain of this table is price + quantity + price with discount + customer + date + campaign
+      Each record represents a unique product and in an individual order.
+  - name: fact_marketing_email_conversion
+    description: |
+      Marketing Email Conversion Fact.
+      The grain of this table is date + time + email + event + customer + campaign
+      Each record represents a unique campaign email and its event type as completed by an customer.
