@@ -43,5 +43,6 @@ models:
       - name: employee_key
         tests: 
           - relationships:
-              to: ref('oliver_dim_employee')
-              field: employee_key
+              arguments:
+                to: ref('oliver_dim_employee')
+                field: employee_key
