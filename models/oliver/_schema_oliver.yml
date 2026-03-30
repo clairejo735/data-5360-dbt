@@ -34,7 +34,7 @@ models:
     description: |
       Staging model for employee certifications.
       Each record represents a certification completed by an employee.
-  - name: fact_employee_certifications
+  - name: fact_certification
     description: |
       Employee Certifications Fact.
       The grain of this table is employee + certification + date + cost
