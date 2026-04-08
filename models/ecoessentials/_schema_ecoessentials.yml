@@ -3,25 +3,129 @@ version: 2
 models:
   - name: eco_dim_campaign
     description: "Ecoessentials Campaign Dimension"
+    columns:
+      - name: campaign_name
+        description: 'Ensures each campaign name is unique'
+        tests:
+          - unique
   - name: eco_dim_customer
     description: "Ecoessentials Customer Dimension"
+    columns:
+      - name: customer_emailaddress
+        description: 'Ensures each customer has a unique email address'
+        tests:
+          - unique
   - name: eco_dim_date
     description: "Ecoessentials Date Dimension"
+    columns: 
+      - name: date
+        description: "Ensures no null dates"
+        tests: 
+          - not_null
   - name: eco_dim_email
     description: "Ecoessentials Email Dimension"
+    columns:
+      - name: emailname
+        description: 'Ensures email names are distinct'
+        tests:
+          - unique
   - name: eco_dim_event
     description: "Ecoessentials Email Event Dimension"
+    columns:
+      - name: eventtype
+        description: 'Only allows specific values as email action/event types'
+        tests:
+          - accepted_values:
+              values:
+                - "SENT"
+                - "OPEN"
+                - "CLICK"
   - name: eco_dim_product
     description: "Ecoessentials Product Dimension"
+    columns:
+      - name: product_name
+        description: 'Ensures product names are distinct'
+        tests:
+          - unique
   - name: eco_dim_timestamp
     description: "Ecoessentials Timestamp Dimension"
+    columns: 
+      - name: event_time
+        description: "Ensures no null timestamps"
+        tests: 
+          - not_null
   - name: fact_order_line
     description: |
       Order Line Fact.
       The grain of this table is price + quantity + price with discount + customer + date + campaign
       Each record represents a unique product and in an individual order.
+    columns:
+      - name: product_key
+        description: 'ensures connection to product dimension'
+        tests: 
+          - relationships:
+              arguments:
+                to: ref('eco_dim_product')
+                field: product_key
+      - name: date_key
+        description: 'ensures connection to date dimension'
+        tests: 
+          - relationships:
+              arguments:
+                to: ref('eco_dim_date')
+                field: date_key 
+      - name: customer_key
+        description: 'ensures connection to customer dimension'
+        tests: 
+          - relationships:
+              arguments:
+                to: ref('eco_dim_customer')
+                field: customer_key 
   - name: fact_marketing_email_conversion
     description: |
       Marketing Email Conversion Fact.
       The grain of this table is date + time + email + event + customer + campaign
       Each record represents a unique campaign email and its event type as completed by an customer.
+    columns:
+      - name: date_key
+        description: 'ensures connection to date dimension'
+        tests: 
+          - relationships:
+              arguments:
+                to: ref('eco_dim_date')
+                field: date_key
+      - name: customer_key
+        description: 'ensures connection to customer dimension'
+        tests: 
+          - relationships:
+              arguments:
+                to: ref('eco_dim_customer')
+                field: customer_key
+      - name: timestamp_key
+        description: 'ensures connection to timestamp dimension'
+        tests: 
+          - relationships:
+              arguments:
+                to: ref('eco_dim_timestamp')
+                field: timestamp_key
+      - name: campaign_key
+        description: 'ensures connection to campaign dimension'
+        tests: 
+          - relationships:
+              arguments:
+                to: ref('eco_dim_campaign')
+                field: campaign_key
+      - name: emailevent_key
+        description: 'ensures connection to event dimension'
+        tests: 
+          - relationships:
+              arguments:
+                to: ref('eco_dim_event')
+                field: emailevent_key
+      - name: email_key
+        description: 'ensures connection to email dimension'
+        tests: 
+          - relationships:
+              arguments:
+                to: ref('eco_dim_email')
+                field: email_key
