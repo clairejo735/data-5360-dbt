@@ -4,7 +4,7 @@
     )
 }}
 
-SELECT
+SELECT DISTINCT
 {{ dbt_utils.generate_surrogate_key(['emailId', 'emailname']) }} as email_key,
 emailID,
 emailname
