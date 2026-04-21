@@ -1,4 +1,3 @@
-<img width="3000" height="1998" alt="EE dashboard, everything" src="https://github.com/user-attachments/assets/e65d46dd-f117-45c7-811b-817e5b070e4e" />
 # Eco Essentials Analytics
 
 ## Overview
