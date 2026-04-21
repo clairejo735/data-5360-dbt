@@ -1,3 +1,4 @@
+<img width="3000" height="1998" alt="EE dashboard, everything" src="https://github.com/user-attachments/assets/e65d46dd-f117-45c7-811b-817e5b070e4e" />
 # Eco Essentials Analytics
 
 ## Overview
@@ -61,11 +62,11 @@ NOTE: * = Conformed dimensions between both business processes
 2. Transform
     1. Dbt was implemented to create and populate our dimensional models. Each dimension tables’ primary key was created using the dbt_utils.generate_surrogate_key functionality.
     2. All changes and additions to the dimensional model were updated using GitHub version control.
-    3.
+
 ##### Modeling and Code References:
 [Ecoessentials Main Folder](https://github.com/clairejo735/data-5360-dbt/tree/main/models/ecoessentials)
 
-Key Files:
+**Key Files:**
 * [Eco Essentials Schema](https://github.com/clairejo735/data-5360-dbt/blob/main/models/ecoessentials/_schema_ecoessentials.yml)
 * [Eco Essentials Source](https://github.com/clairejo735/data-5360-dbt/blob/main/models/ecoessentials/_src_ecoessentials.yml)
 * [Campaign Dimension](https://github.com/clairejo735/data-5360-dbt/blob/main/models/ecoessentials/eco_dim_campaign.sql)
@@ -101,6 +102,7 @@ Final results were tested by running various queries and checking table structur
 **Deliverable:** A dashboard allowing easily consumable insights and visuals from the data warehouse connected live to Snowflake.
 
 #### Tableau Dashboard (Interactive):
+<img width="3000" height="1998" alt="EE dashboard, everything" src="https://github.com/user-attachments/assets/d02d0c63-2a55-4e12-a891-fa0c222e94a1" />
 
 
   
